@@ -2,31 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:task1/register.dart';
+import 'package:task1/login.dart';
 import 'package:task1/customButton.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => _LoginScreen();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreen extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
           width: MediaQuery.of(context).size.width,
+          //color: Colors.red,
           child: Column(
             children: [
-              SvgPicture.asset('images/login_background.svg',
-                  fit: BoxFit.fitWidth, height: 320),
+              Container(
+                child: SvgPicture.asset(
+                  'images/login_background.svg',
+                  height: 100,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               Container(
                   width: MediaQuery.of(context).size.width,
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  //color: Colors.red,
                   alignment: Alignment.topLeft,
+                  //alignment: Alignment.bottomCenter,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -36,8 +45,24 @@ class _LoginScreen extends State<LoginScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text("Sign in",
+                      Text("Register",
+                          //textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.black, fontSize: 50)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text("Email",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black54)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              hintText: 'Eg. examle@email.com')),
                       SizedBox(
                         height: 10,
                       ),
@@ -61,12 +86,30 @@ class _LoginScreen extends State<LoginScreen> {
                           showFlagDialog: false,
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text("Password",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black54)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              hintText: 'Password')),
+                      SizedBox(
+                        height: 10,
+                      ),
                       CustomButton(
                         colour: Theme.of(context).primaryColor,
                         imageExist: 0,
-                        title: 'Sign in',
-                        onPressed: () {},
-                        borderExist: 0,
+                        //buttonIcon: 'images/google-logo-9808.png',
+                        title: 'Register',
+                        onPressed: () {}, borderExist: 0,
                         textColor: Colors.white,
                       ),
                       SizedBox(
@@ -90,7 +133,9 @@ class _LoginScreen extends State<LoginScreen> {
                         buttonIcon: 'images/google-logo-9808.png',
                       ),
                       Container(
+                        //height: 10,
                         padding: const EdgeInsets.only(bottom: 20, left: 20),
+                        //margin: EdgeInsets.all(5),
                         width: double.infinity,
                         child: Column(
                           children: [
@@ -111,10 +156,10 @@ class _LoginScreen extends State<LoginScreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                RegisterScreen()));
+                                                LoginScreen()));
                                   },
                                   child: Text(
-                                    "Register here",
+                                    "Sign in here",
                                     style: const TextStyle(
                                       color: Colors.blueAccent,
                                       fontSize: 20,
@@ -125,10 +170,13 @@ class _LoginScreen extends State<LoginScreen> {
                               ],
                             ),
                             SizedBox(
-                              height: 5,
+                              height: 20,
                             ),
                             Container(
-                                padding: const EdgeInsets.only(left: 20),
+                                //height: 10,
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 20),
+                                //margin: EdgeInsets.all(5),
                                 width: double.infinity,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -141,6 +189,7 @@ class _LoginScreen extends State<LoginScreen> {
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
+                                    //SizedBox(width: 150,),
                                     Text(
                                       "terms and conditions",
                                       style: const TextStyle(
